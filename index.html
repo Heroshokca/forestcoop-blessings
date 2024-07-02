@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลงนามถวายพระพร</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="path/to/your/image.jpg" alt="พระบรมฉายาลักษณ์" class="top-image">
+        <h1>ลงนามถวายพระพร</h1>
+        <form id="blessingForm">
+            <label for="blessing">เลือกคำถวายพระพร:</label>
+            <select id="blessing" name="blessing" required>
+                <option value="">กรุณาเลือก</option>
+                <option value="ขอพระองค์ทรงพระเจริญ ด้วยเกล้าด้วยกระหม่อม ขอเดชะ">ขอพระองค์ทรงพระเจริญ ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</option>
+                <option value="ขอพระองค์ทรงพระเจริญยิ่งยืนนาน ด้วยเกล้าด้วยกระหม่อม ขอเดชะ">ขอพระองค์ทรงพระเจริญยิ่งยืนนาน ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</option>
+                <option value="ขอพระราชทานถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญ ด้วยเกล้าด้วยกระหม่อม ขอเดชะ">ขอพระราชทานถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญ ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</option>
+            </select>
 
+            <label for="name">ข้าพระพุทธเจ้า (ชื่อ นามสกุล):</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="position">ตำแหน่ง (ถ้ามี):</label>
+            <input type="text" id="position" name="position">
+
+            <label for="organization">หน่วยงาน (ถ้ามี):</label>
+            <input type="text" id="organization" name="organization">
+
+            <button type="button" onclick="submitForm()">ลงนามถวายพระพร</button>
+        </form>
+
+        <div class="result" id="result">
+            <div class="success-message">ลงนามถวายพระพรสำเร็จ</div>
+            <h2>ข้อมูลที่ลงนามถวายพระพร</h2>
+            <p><strong>คำถวายพระพร:</strong> <span id="resultBlessing"></span></p>
+            <p><strong>ข้าพระพุทธเจ้า:</strong> <span id="resultName"></span></p>
+            <p><strong>ตำแหน่ง:</strong> <span id="resultPosition"></span></p>
+            <p><strong>หน่วยงาน:</strong> <span id="resultOrganization"></span></p>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
