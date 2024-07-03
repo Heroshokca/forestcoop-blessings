@@ -11,7 +11,7 @@ body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    text-align: center; /* จัดเนื้อหาใน container ให้อยู่กึ่งกลาง */
+    text-align: center;
 }
 .top-image {
     max-width: 100%;
@@ -26,13 +26,13 @@ h1 {
 form {
     display: flex;
     flex-direction: column;
-    align-items: center; /* จัดฟอร์มให้อยู่กึ่งกลาง */
+    align-items: center;
 }
 label {
     margin-bottom: 10px;
     font-weight: bold;
-    width: 100%; /* ให้ label กว้างเต็ม */
-    text-align: left; /* จัดข้อความ label ให้อยู่ซ้าย */
+    width: 100%;
+    text-align: left;
 }
 input[type="text"], select {
     padding: 10px;
@@ -50,22 +50,4 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    width: 100%; /* ปุ่มกว้างเต็ม */
-    box-sizing: border-box;
-}
-button:hover {
-    background-color: #45a049;
-}
-.result {
-    margin-top: 20px;
-    background: #e7ffe7;
-    padding: 20px;
-    border-radius: 4px;
-    display: none;
-}
-.success-message {
-    color: green;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-}
+    width: 100
