@@ -1,70 +1,47 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getDatabase, ref, push, get } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลงนามถวายพระพร</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="path/to/your/image.jpg" alt="พระบรมฉายาลักษณ์" class="top-image">
+        <h1>ลงนามถวายพระพร</h1>
+        <form id="blessingForm">
+            <label for="blessing">เลือกคำถวายพระพร:</label>
+            <select id="blessing" name="blessing" required>
+                <option value="">กรุณาเลือก</option>
+                <option value="ขอพระองค์ทรงพระเจริญ ด้วยเกล้าด้วยกระหม่อม ขอเดชะ">ขอพระองค์ทรงพระเจริญ ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</option>
+                <option value="ขอพระองค์ทรงพระเจริญยิ่งยืนนาน ด้วยเกล้าด้วยกระหม่อม ขอเดชะ">ขอพระองค์ทรงพระเจริญยิ่งยืนนาน ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</option>
+                <option value="ขอพระราชทานถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญ ด้วยเกล้าด้วยกระหม่อม ขอเดชะ">ขอพระราชทานถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญ ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</option>
+            </select>
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-};
+            <label for="name">ข้าพระพุทธเจ้า (ชื่อ นามสกุล):</label>
+            <input type="text" id="name" name="name" required>
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+            <label for="position">ตำแหน่ง (ถ้ามี):</label>
+            <input type="text" id="position" name="position">
 
-function submitForm() {
-    // Get form values
-    var blessing = document.getElementById("blessing").value;
-    var name = document.getElementById("name").value;
-    var position = document.getElementById("position").value;
-    var organization = document.getElementById("organization").value;
+            <label for="organization">หน่วยงาน (ถ้ามี):</label>
+            <input type="text" id="organization" name="organization">
 
-    // Validate form
-    if (!blessing || !name) {
-        alert('กรุณากรอกข้อมูลให้ครบถ้วน');
-        return;
-    }
+            <button type="button" onclick="submitForm()">ลงนามถวายพระพร</button>
+        </form>
 
-    // Show result
-    document.getElementById("resultBlessing").innerText = blessing;
-    document.getElementById("resultName").innerText = name;
-    document.getElementById("resultPosition").innerText = position;
-    document.getElementById("resultOrganization").innerText = organization;
-    document.getElementById("result").style.display = "block";
+        <div class="result" id="result">
+            <div class="success-message">ลงนามถวายพระพรสำเร็จ</div>
+            <h2>ข้อมูลที่ลงนามถวายพระพร</h2>
+            <p><strong>คำถวายพระพร:</strong> <span id="resultBlessing"></span></p>
+            <p><strong>ข้าพระพุทธเจ้า:</strong> <span id="resultName"></span></p>
+            <p><strong>ตำแหน่ง:</strong> <span id="resultPosition"></span></p>
+            <p><strong>หน่วยงาน:</strong> <span id="resultOrganization"></span></p>
+        </div>
 
-    // Save data to Firebase
-    var newSignRef = ref(database, 'signatures');
-    push(newSignRef, {
-        blessing: blessing,
-        name: name,
-        position: position,
-        organization: organization
-    });
-}
-
-function exportCSV() {
-    const signaturesRef = ref(database, 'signatures');
-    get(signaturesRef).then((snapshot) => {
-        const data = snapshot.val();
-        let csvContent = "data:text/csv;charset=utf-8,คำถวายพระพร,ชื่อ,ตำแหน่ง,หน่วยงาน\n";
-
-        for (let id in data) {
-            const row = data[id];
-            csvContent += `${row.blessing},${row.name},${row.position},${row.organization}\n`;
-        }
-
-        const encodedUri = encodeURI(csvContent);
-        const link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "signatures.csv");
-        document.body.appendChild(link);
-
-        link.click();
-        document.body.removeChild(link);
-    });
-}
+        <button type="button" onclick="exportCSV()">ดาวน์โหลด CSV</button>
+    </div>
+    <script type="module" src="scripts.js"></script>
+</body>
+</html>
