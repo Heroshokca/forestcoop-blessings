@@ -4,13 +4,13 @@ import { getDatabase, ref, push, get } from "https://www.gstatic.com/firebasejs/
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCwU2HJ-W6cMUEfGjhydboxZIcg70Pxosc",
+  authDomain: "testlinebot-a6dec.firebaseapp.com",
+  databaseURL: "https://testlinebot-a6dec.firebaseio.com",
+  projectId: "testlinebot-a6dec",
+  storageBucket: "testlinebot-a6dec.appspot.com",
+  messagingSenderId: "504580392883",
+  appId: "1:504580392883:web:ad395aa890187aeb492dc6"
 };
 
 // Initialize Firebase
