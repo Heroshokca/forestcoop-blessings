@@ -29,7 +29,11 @@ function submitForm() {
         appId: "1:504580392883:web:ad395aa890187aeb492dc6"
     };
 
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    } else {
+        firebase.app(); // Use existing app
+    }
 
     // Get a reference to the database service
     const database = firebase.database();
